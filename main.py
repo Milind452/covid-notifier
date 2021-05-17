@@ -36,10 +36,11 @@ def formatStateData(data):
     msg += "{:^40}{:>15}{:>16}{:>12}{:>12}\n".format('State', 'Confirmed Cases', 'Active Cases', 'Cured', 'Deaths')
     msg += "{:=<95}\n".format('=')
     for state in data:
-        tmp = "{:<40}{:>15}{:>16}{:>12}{:>12}\n".format(state, data[state]['total'], data[state]['active'], data[state]['cured'], data[state]['deaths'])
-        msg += tmp
-        if(state != 'West Bengal'):
-            msg += "{:-<95}\n".format('-')
+        if(state == 'Delhi' or state == 'Karnataka' or state == 'Kerala' or state == 'Maharashtra' or state == 'Odisha' or state == 'West Bengal'):
+            tmp = "{:<40}{:>15}{:>16}{:>12}{:>12}\n".format(state, data[state]['total'], data[state]['active'], data[state]['cured'], data[state]['deaths'])
+            msg += tmp
+            if(state != 'West Bengal'):
+                msg += "{:-<95}\n".format('-')
     msg += "{:=<95}".format('=')
     return msg
 
@@ -82,9 +83,9 @@ if __name__ == '__main__':
     # print(args.auth, args.sid, args.numbers, sep='\n')
 
     msg = createMessage(msg_TotalData, msg_StateData)
-    # print(msg)
+    print(msg)
 
-    sendMeassage(args.sid, args.auth, msg, args.numbers)
+    # sendMeassage(args.sid, args.auth, msg, args.numbers)
     
 
     print('__End')
