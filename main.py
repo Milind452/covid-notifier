@@ -59,33 +59,22 @@ def sendMeassage(account_sid, auth_token, body, numbers):
 
 
 if __name__ == '__main__':
-    print('__Start')
     totalCovidStatsURL = 'https://www.mohfw.gov.in/'
     stateCovidStatsURL = 'https://prsindia.org/covid-19/cases'
     soup = getSoupObject(totalCovidStatsURL)
     totalData = getTotalData(soup)
     soup = getSoupObject(stateCovidStatsURL)
     stateData = getStateData(soup)
-    # print(totalData)
-    # print('********************')
-    # print(stateData)
 
     msg_TotalData = formatTotalData(totalData)
-    # print(msg_TotalData)
     msg_StateData = formatStateData(stateData)
-    # print(msg_StateData)
 
     parser = argparse.ArgumentParser(description= 'Enter twilio credentials to send message')
     parser.add_argument('sid', help= 'Twilio account sid')
     parser.add_argument('auth', help= 'Twilio account auth_token')
     parser.add_argument('numbers', nargs='*', help= 'Receiving phone numbers')
     args = parser.parse_args()
-    # print(args.auth, args.sid, args.numbers, sep='\n')
 
     msg = createMessage(msg_TotalData, msg_StateData)
-    print(msg)
 
-    # sendMeassage(args.sid, args.auth, msg, args.numbers)
-    
-
-    print('__End')
+    sendMeassage(args.sid, args.auth, msg, args.numbers)
