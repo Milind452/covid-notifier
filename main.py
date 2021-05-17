@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-import textwrap
+import argparse
 
 
 def getSoupObject(url):
@@ -58,6 +58,12 @@ if __name__ == '__main__':
     msg_TotalData = formatTotalData(totalData)
     # print(msg_TotalData)
     msg_StateData = formatStateData(stateData)
-    print(msg_StateData)
+    # print(msg_StateData)
+
+    parser = argparse.ArgumentParser(description= 'Enter twillio credentials to send message')
+    parser.add_argument('sid', help= 'Twillio account sid')
+    parser.add_argument('auth', help= 'Twillio account auth_token')
+    args = parser.parse_args()
+    # print(args.sid, args.auth, sep='\n')
 
     print('__End')
