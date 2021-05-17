@@ -1,19 +1,19 @@
-beautifulsoup4 @ file:///home/linux1/recipes/ci/beautifulsoup4_1610988766420/work
+beautifulsoup4
 brotlipy==0.7.0
 certifi==2020.12.5
-cffi @ file:///C:/ci/cffi_1613247431367/work
-chardet @ file:///C:/ci/chardet_1607706937985/work
-cryptography @ file:///C:/ci/cryptography_1616769504165/work
-idna @ file:///home/linux1/recipes/ci/idna_1610986105248/work
-pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
+cffi
+chardet
+cryptography
+idna
+pycparser
 PyJWT==1.7.1
-pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1608057966937/work
-PySocks @ file:///C:/ci/pysocks_1605307512533/work
+pyOpenSSL
+PySocks
 pytz==2021.1
-requests @ file:///tmp/build/80754af9/requests_1608241421344/work
-six @ file:///C:/ci/six_1605205404068/work
-soupsieve @ file:///tmp/build/80754af9/soupsieve_1616183228191/work
+requests
+six
+soupsieve
 twilio==6.58.0
-urllib3 @ file:///tmp/build/80754af9/urllib3_1615837158687/work
-win-inet-pton @ file:///C:/ci/win_inet_pton_1605306162074/work
+urllib3
+win-inet-pton
 wincertstore==0.2
