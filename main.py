@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from twilio.client import Client
+from twilio.rest import Client
 import argparse
 
 
@@ -43,6 +43,9 @@ def formatStateData(data):
     msg += "{:=<95}".format('=')
     return msg
 
+def createMessage(msg1, msg2):
+    return msg1 + "\n\n\n" + msg2
+
 def sendMeassage(account_sid, auth_token, body, to):
     client = Client(account_sid, auth_token)
     for number in numbers:
@@ -78,6 +81,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
     # print(args.auth, args.sid, args.numbers, sep='\n')
 
-    sendMeassage(sid, auth, msg, numbers)
+    msg = createMessage(msg_TotalData, msg_StateData)
+    # print(msg)
+
+    # sendMeassage(sid, auth, msg, numbers)
+    
 
     print('__End')
