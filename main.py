@@ -60,9 +60,9 @@ if __name__ == '__main__':
     msg_StateData = formatStateData(stateData)
     # print(msg_StateData)
 
-    parser = argparse.ArgumentParser(description= 'Enter twillio credentials to send message')
-    parser.add_argument('sid', help= 'Twillio account sid')
-    parser.add_argument('auth', help= 'Twillio account auth_token')
+    parser = argparse.ArgumentParser(description= 'Enter twilio credentials to send message')
+    parser.add_argument('sid', help= 'Twilio account sid')
+    parser.add_argument('auth', help= 'Twilio account auth_token')
     parser.add_argument('numbers', nargs='*', help= 'Receiving phone numbers')
     args = parser.parse_args()
     # print(args.auth, args.sid, args.numbers, sep='\n')
