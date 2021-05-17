@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 def getSoupObject(url):
     return BeautifulSoup(requests.get(url).content, 'html.parser')
 
-def getGeneralData(soup):
+def getTotalData(soup):
     dataList = soup.find('div', class_ = 'col-xs-8 site-stats-count').findAll('li')
     dataDict = dict()
     for li in dataList:
@@ -27,8 +27,13 @@ def getStateData(soup):
 
 if __name__ == '__main__':
     print('__Start')
-    url = 'https://www.mohfw.gov.in/'
-    url = 'https://prsindia.org/covid-19/cases'
-    soup = getSoupObject(url)
-    getStateData(soup)
+    totalCovidStatsURL = 'https://www.mohfw.gov.in/'
+    stateCovidStatsURL = 'https://prsindia.org/covid-19/cases'
+    soup = getSoupObject(totalCovidStatsURL)
+    totalData = getTotalData(soup)
+    soup = getSoupObject(stateCovidStatsURL)
+    stateData = getStateData(soup)
+    print(totalData)
+    print('********************')
+    print(stateData)
     print('__End')
