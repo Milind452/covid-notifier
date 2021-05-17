@@ -46,7 +46,7 @@ def formatStateData(data):
 def createMessage(msg1, msg2):
     return msg1 + "\n\n\n" + msg2
 
-def sendMeassage(account_sid, auth_token, body, to):
+def sendMeassage(account_sid, auth_token, body, numbers):
     client = Client(account_sid, auth_token)
     for number in numbers:
         from_ = '12038729948'
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     msg = createMessage(msg_TotalData, msg_StateData)
     # print(msg)
 
-    # sendMeassage(sid, auth, msg, numbers)
+    sendMeassage(args.sid, args.auth, msg, args.numbers)
     
 
     print('__End')
