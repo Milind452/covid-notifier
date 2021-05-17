@@ -11,6 +11,8 @@ def getGeneralData(soup):
     for li in dataList:
         tmp = li.text.strip().split()
         dataDict[tmp[0]] = tmp[1]
+    vaccineData = soup.find('div', class_ = 'fullbol').text.strip().split()
+    dataDict[vaccineData[1]] = "".join(vaccineData[3].split(','))
     print(dataDict)
 
 if __name__ == '__main__':
