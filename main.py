@@ -13,7 +13,7 @@ def getGeneralData(soup):
         dataDict[tmp[0]] = tmp[1]
     vaccineData = soup.find('div', class_ = 'fullbol').text.strip().split()
     dataDict[vaccineData[1]] = "".join(vaccineData[3].split(','))
-    print(dataDict)
+    return dataDict
 
 def getStateData(soup):
     table = soup.find('table', class_ = 'table table-striped table-bordered').find('tbody')
@@ -22,7 +22,7 @@ def getStateData(soup):
         data = row.findAll('td')
         if data != []:
             stateData[data[1].text] = {'Total confirmed cases' : data[2].text, 'Active cases' : data[3].text, 'Cured/Discharged' : data[4].text, 'Deaths' : data[5].text}
-    print(stateData)
+    return stateData
 
 
 if __name__ == '__main__':
