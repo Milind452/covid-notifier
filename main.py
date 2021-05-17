@@ -28,6 +28,11 @@ def formatTotalData(data):
     msg = "Active cases: {0}\nDischarged:   {1}\nDeaths:       {2}\nVaccinations: {3}".format(data['Active'], data['Discharged'], data['Deaths'], data['Vaccination'])
     return msg
 
+def formatStateData(data):
+    for state in data:
+        print(state, data[state]['Active cases'])
+    # return data.keys()
+
 if __name__ == '__main__':
     print('__Start')
     totalCovidStatsURL = 'https://www.mohfw.gov.in/'
@@ -41,6 +46,8 @@ if __name__ == '__main__':
     # print(stateData)
 
     msg_TotalData = formatTotalData(totalData)
-    print(msg_TotalData)
+    # print(msg_TotalData)
+    msg_StateData = formatStateData(stateData)
+    print(msg_StateData)
 
     print('__End')
