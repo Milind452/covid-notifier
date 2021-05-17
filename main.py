@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+import textwrap
+
 
 def getSoupObject(url):
     return BeautifulSoup(requests.get(url).content, 'html.parser')
@@ -29,9 +31,17 @@ def formatTotalData(data):
     return msg
 
 def formatStateData(data):
+    msg = ""
+    msg += "{:=<95}\n".format('=')
+    msg += "{:^40}{:>15}{:>16}{:>12}{:>12}\n".format('State', 'Confirmed Cases', 'Active Cases', 'Cured', 'Deaths')
+    msg += "{:=<95}\n".format('=')
     for state in data:
-        print(state, data[state]['Active cases'])
-    # return data.keys()
+        tmp = "{:<40}{:>15}{:>16}{:>12}{:>12}\n".format(state, data[state]['total'], data[state]['active'], data[state]['cured'], data[state]['deaths'])
+        msg += tmp
+        if(state != 'West Bengal'):
+            msg += "{:-<95}\n".format('-')
+    msg += "{:=<95}".format('=')
+    return msg
 
 if __name__ == '__main__':
     print('__Start')
