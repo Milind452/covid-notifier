@@ -21,7 +21,7 @@ def getStateData(soup):
     for row in table.findAll('tr'):
         data = row.findAll('td')
         if data != []:
-            stateData[data[1].text] = {'Total confirmed cases' : data[2].text, 'Active cases' : data[3].text, 'Cured/Discharged' : data[4].text, 'Deaths' : data[5].text}
+            stateData[data[1].text] = {'total' : data[2].text, 'active' : data[3].text, 'cured' : data[4].text, 'deaths' : data[5].text}
     return stateData
 
 def formatTotalData(data):
