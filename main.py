@@ -63,7 +63,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description= 'Enter twillio credentials to send message')
     parser.add_argument('sid', help= 'Twillio account sid')
     parser.add_argument('auth', help= 'Twillio account auth_token')
+    parser.add_argument('numbers', nargs='*', help= 'Receiving phone numbers')
     args = parser.parse_args()
-    # print(args.sid, args.auth, sep='\n')
+    # print(args.auth, args.sid, args.numbers, sep='\n')
 
     print('__End')
