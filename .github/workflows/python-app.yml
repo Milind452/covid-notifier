@@ -3,11 +3,11 @@
 
 name: Python application
 
-# Trigger Workflow everyday at 2:40 am
+# Trigger Workflow everyday at 6:00pm (12:30pm UTC)
 
 on:
   schedule:
-    - cron: '40 2 * * *'
+    - cron: '30 12 * * *'
   workflow_dispatch:
   #workflow_dispatch helps run workflow anytime with a single click.
 
