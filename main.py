@@ -24,6 +24,9 @@ def getStateData(soup):
             stateData[data[1].text] = {'Total confirmed cases' : data[2].text, 'Active cases' : data[3].text, 'Cured/Discharged' : data[4].text, 'Deaths' : data[5].text}
     return stateData
 
+def formatTotalData(data):
+    msg = "Active cases: {0}\nDischarged:   {1}\nDeaths:       {2}\nVaccinations: {3}".format(data['Active'], data['Discharged'], data['Deaths'], data['Vaccination'])
+    return msg
 
 if __name__ == '__main__':
     print('__Start')
@@ -33,7 +36,11 @@ if __name__ == '__main__':
     totalData = getTotalData(soup)
     soup = getSoupObject(stateCovidStatsURL)
     stateData = getStateData(soup)
-    print(totalData)
-    print('********************')
-    print(stateData)
+    # print(totalData)
+    # print('********************')
+    # print(stateData)
+
+    msg_TotalData = formatTotalData(totalData)
+    print(msg_TotalData)
+
     print('__End')
