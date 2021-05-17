@@ -26,4 +26,4 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Execute
       run: |
-        python main.py ${{ secrets.ACCOUNT_SID }} ${{ AUTH_TOKEN }} ${{ NUMBERS }} 
+        python main.py ${{ secrets.ACCOUNT_SID }} ${{ secrets.AUTH_TOKEN }} ${{ secrets.NUMBERS }} 
