@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+from twilio.client import Client
 import argparse
 
 
@@ -43,6 +43,17 @@ def formatStateData(data):
     msg += "{:=<95}".format('=')
     return msg
 
+def sendMeassage(account_sid, auth_token, body, to):
+    client = Client(account_sid, auth_token)
+    for number in numbers:
+        from_ = '12038729948'
+        to = number
+        message = client.messages.create(
+                    body= body,
+                    to= to,
+                    from_= from_)
+
+
 if __name__ == '__main__':
     print('__Start')
     totalCovidStatsURL = 'https://www.mohfw.gov.in/'
@@ -66,5 +77,7 @@ if __name__ == '__main__':
     parser.add_argument('numbers', nargs='*', help= 'Receiving phone numbers')
     args = parser.parse_args()
     # print(args.auth, args.sid, args.numbers, sep='\n')
+
+    sendMeassage(sid, auth, msg, numbers)
 
     print('__End')
