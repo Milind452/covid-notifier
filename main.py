@@ -44,8 +44,18 @@ def formatStateData(data):
     msg += "{:=<95}".format('=')
     return msg
 
-def createMessage(msg1, msg2):
-    return msg1 + "\n\n\n" + msg2
+def createMessage():
+    totalCovidStatsURL = 'https://www.mohfw.gov.in/'
+    stateCovidStatsURL = 'https://prsindia.org/covid-19/cases'
+    soup = getSoupObject(totalCovidStatsURL)
+    totalData = getTotalData(soup)
+    soup = getSoupObject(stateCovidStatsURL)
+    stateData = getStateData(soup)
+
+    msg_TotalData = formatTotalData(totalData)
+    msg_StateData = formatStateData(stateData)
+
+    return "Covid Statistics\n" + msg_TotalData + "\n\n\n" + msg_StateData
 
 def sendMeassage(account_sid, auth_token, body, numbers):
     client = Client(account_sid, auth_token)
@@ -59,22 +69,12 @@ def sendMeassage(account_sid, auth_token, body, numbers):
 
 
 if __name__ == '__main__':
-    totalCovidStatsURL = 'https://www.mohfw.gov.in/'
-    stateCovidStatsURL = 'https://prsindia.org/covid-19/cases'
-    soup = getSoupObject(totalCovidStatsURL)
-    totalData = getTotalData(soup)
-    soup = getSoupObject(stateCovidStatsURL)
-    stateData = getStateData(soup)
-
-    msg_TotalData = formatTotalData(totalData)
-    msg_StateData = formatStateData(stateData)
-
     parser = argparse.ArgumentParser(description= 'Enter twilio credentials to send message')
     parser.add_argument('sid', help= 'Twilio account sid')
     parser.add_argument('auth', help= 'Twilio account auth_token')
     parser.add_argument('numbers', nargs='*', help= 'Receiving phone numbers')
     args = parser.parse_args()
 
-    msg = createMessage(msg_TotalData, msg_StateData)
+    msg = createMessage()
 
     sendMeassage(args.sid, args.auth, msg, args.numbers)
