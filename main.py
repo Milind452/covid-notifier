@@ -2,10 +2,12 @@ import requests
 from bs4 import BeautifulSoup
 
 
+def getSoupObject(url):
+    return BeautifulSoup(requests.get(url).content, 'html.parser')
+
 if __name__ == '__main__':
     print('__Start')
     url = 'https://www.github.com'
-    page = requests.get(url).content
-    soup = BeautifulSoup(page, 'html.parser')
+    soup = getSoupObject(url)
     print(soup.title)
     print('__End')
